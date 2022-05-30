@@ -1,0 +1,32 @@
+#############################################
+#                                           #
+#     Configuration file for alacritty      #
+#                                           #
+#############################################
+
+# background_opacity: 0.9
+
+window:
+  padding:
+    x: 10
+    y: 9
+
+scrolling:
+  history: 8000
+  auto_scroll: true
+
+tabspaces: 4
+
+font:
+  size: 16.0
+
+# shell:
+#   program: /bin/fish
+#   args:
+#     - --login
+
+dynamic_title: true
+
+live_config_reload: true
+
+draw_bold_text_with_bright_colors: true

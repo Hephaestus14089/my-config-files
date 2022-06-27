@@ -1,0 +1,80 @@
+#+title: my-config-files
+
+A repository containing the configuration files of programs that I love using.
+
+Due to my habit of distro hopping (quite frequently), I thought it to be best to store my custom configuration files some place which is easily accessible, and changes can be easily updated (I have a habit of tinkering around with my configs quite frequently too).
+
+In this file, the usage of each file in the repo will be briefly explained below.
+
+This particular file, the README file, has not been given a dedicated section for explanation. The purpose of this file is solely to serve as a guide to those who are not well-acquainted (but want to be) with this project.
+
+* contents :toc:
+- [[#bashrc][bashrc]]
+- [[#configfish][config.fish]]
+- [[#alacrittyyml][alacritty.yml]]
+- [[#starshiptoml][starship.toml]]
+- [[#xinitrc][xinitrc]]
+- [[#rcconf][rc.conf]]
+
+* bashrc
+Configuration file for the bash shell (executed before starting each session of the shell).
+
+For the spark implementation, check out the spark branch of this repo. (Many features of in the main branch file will be missing. Try combining the features on both the files.)
+
+* config.fish
+Configuration file for the fish shell (executed before starting each session of the shell).
+
+For the spark implementation, check out the spark branch of this repo. (Many features of in the main branch file will be missing. Try combining the features on both the files.)
+
+* alacritty.yml
+Configuration file for the alacritty terminal emulator.
+
+- The 'background_opacity' feature is apparantly deprecated, so it is commented out.
+  Please do let me know if you can configure around with the feature replacing this. Feel free to create a pull request.
+- The 'shell' feature is commented out. It is used to set the default shell for the terminal emulator. I personally am a fan of the fish shell.
+
+  #+begin_src yaml
+   shell:
+     program: /bin/fish
+     args:
+       - --login
+  #+end_src
+
+* starship.toml
+Configuration file for the starship cross-shell prompt.
+
+https://starship.rs
+
+* xinitrc
+Configuration file for the X11 display server.
+
+This configuration is set to start:-
+- dwmblocks plugin/patch for dwm
+- nitrogen background setter
+- picom compositor
+- dwm (Dynamic Window Manager) tilling window manager
+
+  #+begin_src sh
+  dwmblocks &
+  nitrogen --restore &
+  picom &
+
+  exec dwm
+  #+end_src
+
+- also contains a section for setting the resolution, which is commented out
+
+  #+begin_src sh
+  xrandr --newmode "1920x1080_60.00"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync
+  xrandr --addmode Virtual-1 1920x1080_60.00
+  xrandr --output Virtual-1 --mode 1920x1080_60.00
+  #+end_src
+
+* rc.conf
+One of the configuration files of the ranger cli file manager.
+
+In this file, the view image feature is set to be used with 'ueberzug', without which you would not be able to preview images in the terminal, i.e. according to this configuration.
+
+#+begin_src conf
+set preview_images_method ueberzug
+#+end_src

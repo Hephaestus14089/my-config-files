@@ -45,24 +45,30 @@ alias glog='git log --oneline'
 alias gcommit='git commit -m'
 alias gclone='git clone'
 alias gconfig='git config'
+alias gbranch='git branch'
+alias gswitch='git switch'
+alias gcheckout='git checkout'
+alias gtag='git tag'
+alias gdiff='git diff'
+alias ghclone='gh repo clone'
 
 # Clear alias
 alias clr='clear'
 
 # Messages
-val=$(( `seq 1 3 | sort -R | head -n 1` ))
+# val=$(( `seq 1 3 | sort -R | head -n 1` ))
 
-if [ $val -eq 1 ]
-then
-	figlet -t "Arch  Linux"; echo
-elif [ $val -eq 2 ]
-then
-	figlet -t "I  use  Arch  btw ." | lolcat; echo
-else
-	pfetch
-fi
+# if [ $val -eq 1 ]
+# then
+# 	figlet -t "Arch  Linux"; echo
+# elif [ $val -eq 2 ]
+# then
+# 	figlet -t "I  use  Arch  btw ." | lolcat; echo
+# else
+# 	pfetch
+# fi
 
-# PS1='[\u@\h \W]\$ '
+PS1='[\u@\h \W]\$ '
 # PS1='[\u@\h \W]\n\$ '
 
-eval "$(starship init bash)"
+# eval "$(starship init bash)"

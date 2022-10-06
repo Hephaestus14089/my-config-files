@@ -22,7 +22,7 @@
 
 # ~/.config/starship.toml
 
-command_timeout = 4
+command_timeout = 4000
 
 [time]
 disabled = true

@@ -11,6 +11,7 @@ export EDITOR=emacs
 export VISUAL=vim
 export RANGER_LOAD_DEFAULT_RC=false
 
+# Ignore duplicate entries in bash history
 HISTCONTROL=ignoredups
 
 alias ls='ls --color=auto'

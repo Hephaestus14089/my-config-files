@@ -14,6 +14,11 @@
 
 set fish_greeting ""
 
+set -x GPG_TTY (tty)
+
+set BUN_INSTALL /home/bhargav/.bun
+set PATH $BUN_INSTALL/bin $PATH
+
 ######################    aliases    ########################
 
 alias clr 'clear'
@@ -25,6 +30,8 @@ alias emac 'emacs ./ 1>/dev/null 2>&1 &'
 alias suspend-ram 'systemctl suspend'
 alias sys-up 'sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y'
 alias sys-up-man 'sudo apt update && sudo apt upgrade && sudo apt autremove'
+alias python 'python3'
+alias py 'python'
 
 # navigation
 alias l 'ls -1'

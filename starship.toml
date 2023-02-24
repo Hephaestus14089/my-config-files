@@ -22,7 +22,7 @@
 
 # ~/.config/starship.toml
 
-command_timeout = 4000
+command_timeout = 6000
 
 [time]
 disabled = true
@@ -43,7 +43,10 @@ format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
 format = '\[[$symbol($version)]($style)\]'
 
 [cmd_duration]
-format = '\[[ $duration]($style)\]'
+format = '\[[ $duration]($style)\]'
+
+[c]
+format = '\[[$symbol($version)-gcc]($style)\]'
 
 [cobol]
 format = '\[[$symbol($version)]($style)\]'
@@ -184,7 +187,6 @@ symbol = " "
 
 [swift]
 symbol = "ﯣ "
-
 format = '\[[$symbol($version)]($style)\]'
 
 [terraform]

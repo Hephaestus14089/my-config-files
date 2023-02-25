@@ -19,6 +19,8 @@ tabspaces: 4
 
 font:
   size: 16.0
+#  normal:
+#    family: SauceCodePro Nerd Font
 
 # shell:
 #   program: /bin/fish

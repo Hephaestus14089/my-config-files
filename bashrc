@@ -1,41 +1,144 @@
-##
-##  ~/.bashrc
-##
+# /etc/bash/bashrc
+#
+# This file is sourced by all *interactive* bash shells on startup,
+# including some apparently interactive shells such as scp and rcp
+# that can't tolerate any output.  So make sure this doesn't display
+# anything or bad things will happen !
 
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
 
-# set environment variables
-# export PATH=/home/bhargav/.emacs.d/bin:/home/bhargav/go/bin:/home/bhargav/.local/bin/:/home/bhargav/.cargo/bin:/sbin:/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl
-export EDITOR=emacs
-export VISUAL=vim
+# Test for an interactive shell.  There is no need to set anything
+# past this point for scp and rcp, and it's important to refrain from
+# outputting anything in those cases.
+if [[ $- != *i* ]] ; then
+	# Shell is non-interactive.  Be done now!
+	return
+fi
+
+# setting custom environment variables
 export RANGER_LOAD_DEFAULT_RC=false
+
+# Bash won't get SIGWINCH if another process is in the foreground.
+# Enable checkwinsize so that bash will check the terminal size when
+# it regains control.  #65623
+# http://cnswww.cns.cwru.edu/~chet/bash/FAQ (E11)
+shopt -s checkwinsize
+
+# Disable completion when the input buffer is empty.  i.e. Hitting tab
+# and waiting a long time for bash to expand all of $PATH.
+shopt -s no_empty_cmd_completion
+
+# Enable history appending instead of overwriting when exiting.  #139609
+shopt -s histappend
 
 # Ignore duplicate entries in bash history
 HISTCONTROL=ignoredups
 
-alias ls='ls --color=auto'
+# Save each command to the history file as it's executed.  #517342
+# This does mean sessions get interleaved when reading later on, but this
+# way the history is always up to date.  History is not synced across live
+# sessions though; that is what `history -n` does.
+# Disabled by default due to concerns related to system recovery when $HOME
+# is under duress, or lives somewhere flaky (like NFS).  Constantly syncing
+# the history will halt the shell prompt until it's finished.
+#PROMPT_COMMAND='history -a'
 
-#####  More aliases  #####
+# Change the window title of X terminals 
+case ${TERM} in
+	[aEkx]term*|rxvt*|gnome*|konsole*|interix|tmux*)
+		PS1='\[\033]0;\u@\h:\w\007\]'
+		;;
+	screen*)
+		PS1='\[\033k\u@\h:\w\033\\\]'
+		;;
+	*)
+		unset PS1
+		;;
+esac
 
+# Set colorful PS1 only on colorful terminals.
+# dircolors --print-database uses its own built-in database
+# instead of using /etc/DIR_COLORS.  Try to use the external file
+# first to take advantage of user additions.
+# We run dircolors directly due to its changes in file syntax and
+# terminal name patching.
+use_color=false
+if type -P dircolors >/dev/null ; then
+	# Enable colors for ls, etc.  Prefer ~/.dir_colors #64489
+	LS_COLORS=
+	if [[ -f ~/.dir_colors ]] ; then
+		eval "$(dircolors -b ~/.dir_colors)"
+	elif [[ -f /etc/DIR_COLORS ]] ; then
+		eval "$(dircolors -b /etc/DIR_COLORS)"
+	else
+		eval "$(dircolors -b)"
+	fi
+	# Note: We always evaluate the LS_COLORS setting even when it's the
+	# default.  If it isn't set, then `ls` will only colorize by default
+	# based on file attributes and ignore extensions (even the compiled
+	# in defaults of dircolors). #583814
+	if [[ -n ${LS_COLORS:+set} ]] ; then
+		use_color=true
+	else
+		# Delete it if it's empty as it's useless in that case.
+		unset LS_COLORS
+	fi
+else
+	# Some systems (e.g. BSD & embedded) don't typically come with
+	# dircolors so we need to hardcode some terminals in here.
+	case ${TERM} in
+	[aEkx]term*|rxvt*|gnome*|konsole*|screen|tmux|cons25|*color) use_color=true;;
+	esac
+fi
+
+if ${use_color} ; then
+	if [[ ${EUID} == 0 ]] ; then
+		PS1+='\[\033[01;31m\]\h\[\033[01;34m\] \w \$\[\033[00m\] '
+	else
+		PS1+='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\] '
+	fi
+
+	alias ls='ls --color=auto'
+	alias grep='grep --colour=auto'
+else
+	# show root@ when we don't have colors
+	PS1+='\u@\h \w \$ '
+fi
+
+for sh in /etc/bash/bashrc.d/* ; do
+	[[ -r ${sh} ]] && source "${sh}"
+done
+
+# Try to keep environment pollution down, EPA loves us.
+unset use_color sh
+
+# Configure completion for doas
+# -c : Complete arguments as if they were commands
+#     (eg: `doas emer<tab>` -> `doas emerge`)
+#     (eg: `doas dd status=p<tab>` -> `doas dd status=progress`)
+# -f : Complete arguments as if they were directory names (default behaviour)
+#     (eg: `doas /bi<tab>` -> `doas /bin/`)
+complete -cf doas
+
+#####  Custom aliases  #####
+#
 # Config alias
 alias config='vim ~/.bashrc'
 alias xconfig='vim ~/.xinitrc'
 alias alacrittyconfig='vim ~/.config/alacritty/alacritty.yml'
-
+#
 # Navigation aliases
 alias la='ls -A'
 alias lr='ls -R'
 alias lal='ls -Al'
 alias ll='ls -l'
 alias l='ls -1'
-
+#
 alias ..='cd ../'
 alias ..2='cd ../../'
 alias ..3='cd ../../../'
 alias ..4='cd ../../../../'
 alias ..5='cd ../../../../../'
-
+#
 # Git aliases
 alias gpush='git push'
 alias gpull='git pull'
@@ -52,24 +155,18 @@ alias gcheckout='git checkout'
 alias gtag='git tag'
 alias gdiff='git diff'
 alias ghclone='gh repo clone'
-
-# Clear alias
+#
+# Miscelleneous
 alias clr='clear'
+alias python='python3'
+alias py='python'
+alias emacsc='emacsclient -ca "emacs" 1>&2 2>/dev/null &; disown'
+alias zero-brt='light -S 0'
+alias suspend-ram='loginctl suspend'
+alias shtdn='doas shutdown -Ph now'
+#
+#############################
 
-# Messages
-# val=$(( `seq 1 3 | sort -R | head -n 1` ))
-
-# if [ $val -eq 1 ]
-# then
-# 	figlet -t "Arch  Linux"; echo
-# elif [ $val -eq 2 ]
-# then
-# 	figlet -t "I  use  Arch  btw ." | lolcat; echo
-# else
-# 	pfetch
-# fi
-
-PS1='[\u@\h \W]\$ '
-# PS1='[\u@\h \W]\n\$ '
-
-# eval "$(starship init bash)"
+## GPG Key
+# [ -f ~/.bashrc ] && echo 'export GPG_TTY=$(tty)' >> ~/.bashrc
+export GPG_TTY=$(tty)

@@ -17,6 +17,11 @@ fi
 # setting custom environment variables
 export RANGER_LOAD_DEFAULT_RC=false
 
+# setting TERMINFO_DIRS for alacritty
+if [[ "${TERM}" == "alacritty" ]] ; then
+        export TERMINFO_DIRS="/usr/share/terminfo/"
+fi
+
 # Bash won't get SIGWINCH if another process is in the foreground.
 # Enable checkwinsize so that bash will check the terminal size when
 # it regains control.  #65623

@@ -19,6 +19,11 @@ set -x GPG_TTY (tty)
 set BUN_INSTALL /home/bhargav/.bun
 set PATH $BUN_INSTALL/bin $PATH
 
+# setting TERMINFO_DIRS for alacritty
+if test "$TERM" = "alacritty"
+        export TERMINFO_DIRS="/usr/share/terminfo/"
+end
+
 ######################    aliases    ########################
 
 alias clr 'clear'

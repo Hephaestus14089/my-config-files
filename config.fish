@@ -16,8 +16,8 @@ set fish_greeting ""
 
 set -x GPG_TTY (tty)
 
-set BUN_INSTALL /home/bhargav/.bun
-set PATH $BUN_INSTALL/bin $PATH
+# set BUN_INSTALL /home/bhargav/.bun
+# set PATH $BUN_INSTALL/bin $PATH
 
 # setting TERMINFO_DIRS for alacritty
 if test "$TERM" = "alacritty"
@@ -29,15 +29,15 @@ end
 alias clr 'clear'
 alias config 'vim ~/.config/fish/config.fish'
 alias alacrittyconfig 'vim ~/.config/alacritty/alacritty.yml'
+alias python 'python3'
+alias py 'python'
 alias shtdn 'shutdown -P now'
-alias frfox 'firefox 1>/dev/null 2>&1 &'
+# alias frfox 'firefox 1>/dev/null 2>&1 &'
 alias emac 'emacs ./ 1>/dev/null 2>&1 &'
 alias emacsc 'emacsclient -ca "emacs" 1>&2 2>/dev/null &; disown'
 alias suspend-ram 'systemctl suspend'
-alias sys-up 'sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y'
-alias sys-up-man 'sudo apt update && sudo apt upgrade && sudo apt autremove'
-alias python 'python3'
-alias py 'python'
+# alias sys-up 'sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y'
+# alias sys-up-man 'sudo apt update && sudo apt upgrade && sudo apt autremove'
 
 # navigation
 alias l 'ls -1'

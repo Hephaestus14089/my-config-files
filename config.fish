@@ -13,7 +13,7 @@
 
 
 set fish_greeting ""
-
+set -x EDITOR nvim
 set -x GPG_TTY (tty)
 
 # set BUN_INSTALL /home/bhargav/.bun

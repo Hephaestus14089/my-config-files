@@ -12,6 +12,7 @@ This particular file, the README file, has not been given a dedicated section fo
 - [[#bashrc][bashrc]]
 - [[#configfish][config.fish]]
 - [[#alacrittyyml][alacritty.yml]]
+- [[#alacrittytoml][alacritty.toml]]
 - [[#starshiptoml][starship.toml]]
 - [[#xinitrc][xinitrc]]
 - [[#rcconf][rc.conf]]
@@ -39,6 +40,10 @@ Configuration file for the alacritty terminal emulator.
      args:
        - --login
   #+end_src
+
+* alacritty.toml
+Configuration file for alacritty version 0.13+.
+/This a just a migration from the alacritty.yml file./
 
 * starship.toml
 Configuration file for the starship cross-shell prompt.

@@ -1,0 +1,45 @@
+live_config_reload = false
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.bright]
+black = "#727072"
+blue = "#FC9867"
+cyan = "#78DCE8"
+green = "#A9DC76"
+magenta = "#AB9DF2"
+red = "#FF6188"
+white = "#FCFCFA"
+yellow = "#FFD866"
+
+[colors.normal]
+black = "#403E41"
+blue = "#FC9867"
+cyan = "#78DCE8"
+green = "#A9DC76"
+magenta = "#AB9DF2"
+red = "#FF6188"
+white = "#FCFCFA"
+yellow = "#FFD866"
+
+[colors.primary]
+background = "#3B393C"
+foreground = "#FCFCFA"
+
+[font]
+size = 7.5
+
+[font.normal]
+family = "SauceCodePro Nerd Font"
+
+[scrolling]
+history = 8000
+
+[shell]
+args = ["--login"]
+program = "/bin/fish"
+
+[window.padding]
+x = 8
+y = 8

@@ -16,6 +16,7 @@ fi
 
 # setting custom environment variables
 export RANGER_LOAD_DEFAULT_RC=false
+export EDITOR=nvim
 
 # setting TERMINFO_DIRS for alacritty
 if [[ "${TERM}" == "alacritty" ]] ; then

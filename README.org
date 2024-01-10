@@ -43,7 +43,8 @@ Configuration file for the alacritty terminal emulator.
 
 * alacritty.toml
 Configuration file for alacritty version 0.13+.
-/This a just a migration from the alacritty.yml file./
+
+/This a simply a migration from the existing alacritty.yml file./
 
 * starship.toml
 Configuration file for the starship cross-shell prompt.

@@ -20,7 +20,7 @@ export EDITOR=nvim
 
 # setting TERMINFO_DIRS for alacritty
 if [[ "${TERM}" == "alacritty" ]] ; then
-        export TERMINFO_DIRS="/usr/share/terminfo/"
+	export TERMINFO_DIRS="/usr/share/terminfo/"
 fi
 
 # Bash won't get SIGWINCH if another process is in the foreground.
@@ -117,13 +117,15 @@ done
 # Try to keep environment pollution down, EPA loves us.
 unset use_color sh
 
-# Configure completion for doas
+# Configure completion
 # -c : Complete arguments as if they were commands
 #     (eg: `doas emer<tab>` -> `doas emerge`)
+#     (eg: `man yt-<tab>` -> `man yt-dlp`)
 #     (eg: `doas dd status=p<tab>` -> `doas dd status=progress`)
 # -f : Complete arguments as if they were directory names (default behaviour)
 #     (eg: `doas /bi<tab>` -> `doas /bin/`)
 complete -cf doas
+complete -c man
 
 #####  Custom aliases  #####
 #

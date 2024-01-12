@@ -28,7 +28,7 @@ end
 
 alias clr 'clear'
 alias config 'vim ~/.config/fish/config.fish'
-alias alacrittyconfig 'vim ~/.config/alacritty/alacritty.yml'
+alias alacrittyconfig 'vim ~/.config/alacritty/alacritty.toml'
 alias python 'python3'
 alias py 'python'
 alias shtdn 'shutdown -P now'

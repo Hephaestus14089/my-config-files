@@ -132,7 +132,7 @@ complete -c man
 # Config alias
 alias config='vim ~/.bashrc'
 alias xconfig='vim ~/.xinitrc'
-alias alacrittyconfig='vim ~/.config/alacritty/alacritty.yml'
+alias alacrittyconfig='vim ~/.config/alacritty/alacritty.toml'
 #
 # Navigation aliases
 alias la='ls -A'

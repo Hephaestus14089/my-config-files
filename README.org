@@ -1,3 +1,5 @@
+[[https://thebsd.github.io/StandWithPalestine][https://raw.githubusercontent.com/TheBSD/StandWithPalestine/main/badges/StandWithPalestine.svg]]
+
 #+title: my-config-files
 
 A repository containing the configuration files of programs that I love using.

@@ -18,6 +18,8 @@ This particular file, the README file, has not been given a dedicated section fo
 - [[#starshiptoml][starship.toml]]
 - [[#xinitrc][xinitrc]]
 - [[#rcconf][rc.conf]]
+- [[#linux-kernel][linux-kernel]]
+  - [[#config][config]]
 
 * bashrc
 Configuration file for the bash shell (executed before starting each session of the shell).
@@ -86,3 +88,9 @@ In this file, the view image feature is set to be used with 'ueberzug', without 
 #+begin_src conf
 set preview_images_method ueberzug
 #+end_src
+
+* linux-kernel
+Configuration files for linux kernel.
+
+** config
+Custom configuration file for the linux kernel.

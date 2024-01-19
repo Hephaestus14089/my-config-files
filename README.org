@@ -18,6 +18,10 @@ This particular file, the README file, has not been given a dedicated section fo
 - [[#starshiptoml][starship.toml]]
 - [[#xinitrc][xinitrc]]
 - [[#rcconf][rc.conf]]
+- [[#doom][doom]]
+  - [[#configel][config.el]]
+  - [[#initel][init.el]]
+  - [[#packagesel][packages.el]]
 - [[#linux-kernel][linux-kernel]]
   - [[#config][config]]
 
@@ -88,6 +92,18 @@ In this file, the view image feature is set to be used with 'ueberzug', without 
 #+begin_src conf
 set preview_images_method ueberzug
 #+end_src
+
+* doom
+Configuration files for doom emacs.
+
+** config.el
+General configuration including themes, fonts, etc.
+
+** init.el
+Controls what doom modules are enabled and the order that they are loaded in.
+
+** packages.el
+Contains installed packages.
 
 * linux-kernel
 Configuration files for linux kernel.

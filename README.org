@@ -23,7 +23,7 @@ This particular file, the README file, has not been given a dedicated section fo
   - [[#initel][init.el]]
   - [[#packagesel][packages.el]]
 - [[#linux-kernel][linux-kernel]]
-  - [[#config][config]]
+  - [[#gentoo][gentoo]]
 
 * bashrc
 Configuration file for the bash shell (executed before starting each session of the shell).
@@ -106,7 +106,10 @@ Controls what doom modules are enabled and the order that they are loaded in.
 Contains installed packages.
 
 * linux-kernel
-Configuration files for linux kernel.
+Configuration files for linux kernels.
 
-** config
-Custom configuration file for the linux kernel.
+** gentoo
+Configuration files for gentoo kernel.
+
+*** config
+Custom configuration file for the gentoo linux kernel (gentoo-sources).

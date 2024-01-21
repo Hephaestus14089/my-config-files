@@ -41,7 +41,6 @@ Configuration file for the alacritty terminal emulator.
 - The 'background_opacity' feature is apparantly deprecated, so it is commented out.
   Please do let me know if you can configure around with the feature replacing this. Feel free to create a pull request.
 - The 'shell' feature is commented out. It is used to set the default shell for the terminal emulator. I personally am a fan of the fish shell.
-
   #+begin_src yaml
    shell:
      program: /bin/fish
@@ -67,7 +66,6 @@ This configuration is set to start:-
 - nitrogen background setter
 - picom compositor
 - dwm (Dynamic Window Manager) tilling window manager
-
   #+begin_src sh
   dwmblocks &
   nitrogen --restore &
@@ -75,9 +73,7 @@ This configuration is set to start:-
 
   exec dwm
   #+end_src
-
 - also contains a section for setting the resolution, which is commented out
-
   #+begin_src sh
   xrandr --newmode "1920x1080_60.00"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync
   xrandr --addmode Virtual-1 1920x1080_60.00
@@ -88,7 +84,6 @@ This configuration is set to start:-
 One of the configuration files of the ranger cli file manager.
 
 In this file, the view image feature is set to be used with 'ueberzug', without which you would not be able to preview images in the terminal, i.e. according to this configuration.
-
 #+begin_src conf
 set preview_images_method ueberzug
 #+end_src
@@ -100,21 +95,16 @@ Configuration files for doom emacs.
 General configuration including themes, fonts, etc.
 
 - Set fonts
-
   #+begin_src elisp
   (setq doom-font (font-spec :family "SauceCodePro Nerd Font Mono" :size 14)
         doom-variable-pitch-font (font-spec :family "Ubuntu" :size 16)
         doom-big-font (font-spec :family "SauceCodePro Nerd Font Mono" :size 14))
   #+end_src
-
 - Set theme
-
   #+begin_src elisp
   (setq doom-theme 'doom-monokai-pro)
   #+end_src
-
 - Disable confirmation prompt on exit
-
   #+begin_src elisp
   (setq confirm-kill-emacs nil)
   #+end_src

@@ -99,6 +99,26 @@ Configuration files for doom emacs.
 ** config.el
 General configuration including themes, fonts, etc.
 
+- Set fonts
+
+  #+begin_src elisp
+  (setq doom-font (font-spec :family "SauceCodePro Nerd Font Mono" :size 14)
+        doom-variable-pitch-font (font-spec :family "Ubuntu" :size 16)
+        doom-big-font (font-spec :family "SauceCodePro Nerd Font Mono" :size 14))
+  #+end_src
+
+- Set theme
+
+  #+begin_src elisp
+  (setq doom-theme 'doom-monokai-pro)
+  #+end_src
+
+- Disable confirmation prompt on exit
+
+  #+begin_src elisp
+  (setq confirm-kill-emacs nil)
+  #+end_src
+
 ** init.el
 Controls what doom modules are enabled and the order that they are loaded in.
 

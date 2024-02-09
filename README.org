@@ -13,6 +13,7 @@ This particular file, the README file, has not been given a dedicated section fo
 * contents :toc:
 - [[#bashrc][bashrc]]
 - [[#configfish][config.fish]]
+- [[#manfish][man.fish]]
 - [[#alacrittyyml][alacritty.yml]]
 - [[#alacrittytoml][alacritty.toml]]
 - [[#starshiptoml][starship.toml]]
@@ -34,6 +35,15 @@ For the spark implementation, check out the spark branch of this repo. (Many fea
 Configuration file for the fish shell (executed before starting each session of the shell).
 
 For the spark implementation, check out the spark branch of this repo. (Many features of in the main branch file will be missing. Try combining the features on both the files.)
+
+* man.fish
+Not really a configuration file.
+I have added a few lines manually to customise the completion that follows the 'man' command in fish shell.
+
+- Complete the command whose man file is to be viewed
+  #+begin_src shell
+  complete -c man -x -a "(__fish_complete_subcommand)"
+  #+end_src
 
 * alacritty.yml
 Configuration file for the alacritty terminal emulator.

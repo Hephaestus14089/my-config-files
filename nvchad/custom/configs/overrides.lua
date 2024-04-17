@@ -11,6 +11,7 @@ M.treesitter = {
     "typescript",
     "tsx",
     "python",
+    "java",
     "c",
     "cpp",
     "markdown",
@@ -30,28 +31,31 @@ M.treesitter = {
 
 M.mason = {
   ensure_installed = {
-    -- lua stuff
+    -- lua
     "lua-language-server",
     "stylua",
 
-    -- web dev stuff
+    -- web dev
     "html-lsp",
     "typescript-language-server",
     "prettier",
 
-    -- markdown stuff
+    -- markdown
     "marksman",
     "markdownlint",
 
-    -- python stuff
+    -- python
     "python-lsp-server",
     "black",
 
-    -- c/cpp stuff
+    -- java
+    "jdtls",
+
+    -- c/cpp
     "clangd",
     "clang-format",
 
-    -- shell stuff
+    -- shell
     "bash-language-server",
     "shellcheck",
   },

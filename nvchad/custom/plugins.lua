@@ -52,6 +52,14 @@ local plugins = {
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
     build = function() vim.fn["mkdp#util#install"]() end,
+  },
+
+  {
+    "lervag/vimtex",
+    lazy = false,
+    init = function()
+      vim.g.vimtex_view_method = 'zathura'
+    end
   }
 
   -- To make a plugin not be loaded

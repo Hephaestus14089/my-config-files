@@ -58,6 +58,9 @@ M.mason = {
     -- shell
     "bash-language-server",
     "shellcheck",
+
+    -- latex
+    "texlab",
   },
 }
 

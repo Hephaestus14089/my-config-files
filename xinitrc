@@ -52,4 +52,4 @@ picom &
 emacs --daemon &
 
 ## start dwm
-exec dwm
+exec dbus-launch --exit-with-session dwm

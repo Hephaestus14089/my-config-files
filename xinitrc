@@ -36,20 +36,26 @@ fi
 # xrandr --newmode "1920x1080_60.00"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync
 # xrandr --addmode Virtual-1 1920x1080_60.00
 # xrandr --output Virtual-1 --mode 1920x1080_60.00
-#
-## For external display
-# xrandr --output HDMI-1 --off
-# bash ~/Projects/duplicate-display-script/script.sh connect
+
+## switch off unnecessary monitor
+xrandr --output HDMI-1 --off
+bash ~/Projects/duplicate-display-script/script.sh connect
+
+## set screensaver timeout
+xset s 9999
 
 ## Load wallpaper, compositor, screensaver, and scripts
-bash ~/Projects/Power-Notify/power-notify.sh &
+bash ~/Projects/Power-Notify/power-notify.sh 15 68 &
 dwmblocks &
 nitrogen --restore &
 picom &
 ~/Projects/xssstate/xsidle.sh slock &
 
 ## start emacs daemon
-emacs --daemon &
+# emacs --daemon
+
+## modify brightness
+(sleep 3 && light -S 0) &
 
 ## start dwm
 exec dbus-launch --exit-with-session dwm

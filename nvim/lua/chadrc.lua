@@ -1,15 +1,17 @@
 ---@type ChadrcConfig
 local M = {}
 
--- Path to overriding theme and highlights files
-local highlights = require "highlights"
+M.base46 = {
+  theme = "chadracula",
+  theme_toggle = { "chadracula", "one_light" },
+}
+
+M.nvdash = { load_on_startup = true }
 
 M.ui = {
-  theme = "wombat",
-  theme_toggle = { "wombat", "one_light" },
-
-  hl_override = highlights.override,
-  hl_add = highlights.add,
+  tabufline = {
+    lazyload = false
+  }
 }
 
 -- M.plugins = "plugins"

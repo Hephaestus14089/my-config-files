@@ -1,17 +1,15 @@
-local on_attach = require("nvchad.configs.lspconfig").on_attach
-local on_init = require("nvchad.configs.lspconfig").on_init
-local capabilities = require("nvchad.configs.lspconfig").capabilities
+require("nvchad.configs.lspconfig").defaults()
 
-local lspconfig = require "lspconfig"
+local servers = {
+  "lua_ls",   -- lua
+  "html",     -- html
+  "ts_ls",    -- typescript, javascript
+  "clangd",   -- c, cpp
+  "jdtls",    -- java
+  "pylsp",    -- python
+  "bashls",   -- bash
+  "marksman", -- markdown
+  "texlab"    -- latex
+}
 
--- lsps with default config
-local servers = { "lua_ls", "html", "tsserver", "clangd", "jdtls", "pylsp", "bashls", "marksman", "texlab" }
-
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = on_attach,
-    on_init = on_init,
-    capabilities = capabilities,
-  }
-end
-
+vim.lsp.enable(servers)

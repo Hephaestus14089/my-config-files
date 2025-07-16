@@ -2,34 +2,14 @@ local overrides = require("configs.overrides")
 
 ---@type NvPluginSpec[]
 local plugins = {
-
-  -- Override plugin definition options
-
   {
     "neovim/nvim-lspconfig",
     config = function()
       require "nvchad.configs.lspconfig"
       require "configs.lspconfig"
-    end, -- Override to setup mason-lspconfig
+    end,
   },
 
-  -- override plugin configs
-  {
-    "williamboman/mason.nvim",
-    opts = overrides.mason
-  },
-
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = overrides.treesitter,
-  },
-
-  {
-    "nvim-tree/nvim-tree.lua",
-    opts = overrides.nvimtree,
-  },
-
-  -- Install a plugin
   {
     "max397574/better-escape.nvim",
     event = "InsertEnter",
@@ -39,42 +19,40 @@ local plugins = {
   },
 
   {
-    "stevearc/conform.nvim",
-    --  for users those who want auto-save conform + lazyloading!
-    event = "BufWritePre",
-    config = function()
-      require "configs.conform"
-    end,
-  },
-
-  {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
-    build = function() vim.fn["mkdp#util#install"]() end,
+    build = ":call mkdp#util#install()",
+    -- build = function()
+    --   vim.cmd [[Lazy load markdown-preview.nvim]]
+    --   vim.fn["mkdp#util#install"]()
+    -- end,
+  },
+
+  {
+    'MeanderingProgrammer/render-markdown.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
   },
 
   {
     "lervag/vimtex",
-    lazy = false,
+    ft = { "markdown" },
     init = function()
       vim.g.vimtex_view_method = 'zathura'
     end
-  }
+  },
 
-  -- To make a plugin not be loaded
-  -- {
-  --   "NvChad/nvim-colorizer.lua",
-  --   enabled = false
-  -- },
+  {
+    "folke/zen-mode.nvim",
+    cmd = { "ZenMode" }
+  },
 
-  -- All NvChad plugins are lazy-loaded by default
-  -- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
-  -- If you want a plugin to load on startup, add `lazy = false` to a plugin spec, for example
-  -- {
-  --   "mg979/vim-visual-multi",
-  --   lazy = false,
-  -- }
+  {
+    "folke/twilight.nvim",
+    cmd = { "Twilight" }
+  },
 }
 
 return plugins
